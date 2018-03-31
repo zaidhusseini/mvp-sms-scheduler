@@ -1,0 +1,20 @@
+{
+  "name": "mvp-sms-scheduler",
+  "version": "1.0.0",
+  "description": "A simple full stack app to schedule reminders via text message",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zaidhusseini/mvp-sms-scheduler.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zaidhusseini/mvp-sms-scheduler/issues"
+  },
+  "homepage": "https://github.com/zaidhusseini/mvp-sms-scheduler#readme"
+}
