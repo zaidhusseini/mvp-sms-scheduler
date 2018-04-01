@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const bodyParser = require('body-parser');
 require('dotenv').load();
 
 //TWILIO AUTH
@@ -10,12 +11,15 @@ const twilioSender = process.env.TWILIO_PHONE_NUMBER;
 const client = require('twilio')(accountSid,authToken);
 const testNumber = process.env.TEST_PHONE_NUMBER;
 
-router.get('/', async (req,res) => {
+router.use(bodyParser.json());
+
+router.post('/', async (req,res) => {
+  console.log(req.body)
 
   const confirmation = await client.messages.create({
-    to: testNumber,
+    to: req.body.to,
     from: twilioSender,
-    body: 'Hello World'
+    body: req.body.body,
   })
   
   res.status(200).send(confirmation);
