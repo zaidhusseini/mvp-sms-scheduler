@@ -19,7 +19,6 @@ const test = {
   date: Date.now() + 60000
 }
 
-
 Scheduler.create(test, (err, result) =>{
   if (err) return console.log(err);
   console.log(result);

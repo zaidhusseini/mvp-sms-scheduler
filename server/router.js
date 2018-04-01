@@ -20,7 +20,7 @@ router.post('/', async (req,res) => {
     to: req.body.to,
     from: twilioSender,
     body: req.body.body,
-  })
+  });
   
   res.status(200).send(confirmation);
 

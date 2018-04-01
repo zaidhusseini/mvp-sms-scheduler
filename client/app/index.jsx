@@ -8,24 +8,31 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      to: '',
+      recipient: '',
       body: ''
     }
   }
 
-  handleChange(e){
-    this.setState({})
+  handleChange(e, field){
+
+    const fieldSelector = {
+      recipient: ()=> this.setState({recipient: e.target.value}),
+      body: ()=> this.setState({body: e.target.value})
+    }
+
+    fieldSelector[field](); //set value of text field
+    console.log(this.state.recipient);
 
   }
 
   scheduleMessage(e){
     e.preventDefault(); //prevent screen refresh
 
-    console.log('message sent');
+    console.log(this.state.recipient)
 
     axios.post('/send',{
-      to: '',
-      body: 'yoooo',
+      to: this.state.recipient,
+      body: this.state.body,
       date: Date.now()
     })
     .then((res)=> console.log(res));
@@ -35,9 +42,9 @@ class App extends React.Component {
 
     return (<div>
               <form>
-                <Recipient />
-                <Body />
-                <input type="submit" value="submit" onClick={this.scheduleMessage} />
+                <Recipient handleChange={this.handleChange.bind(this)} value={this.state.recipient}/>
+                <Body handleChange={this.handleChange.bind(this)} value={this.state.body}/>
+                <input type="submit" value="submit" onClick={this.scheduleMessage.bind(this)} />
               </form>
             </div>);
   }
