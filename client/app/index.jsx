@@ -2,7 +2,11 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import Recipient from './components/Recipient';
 import Body from './components/Body';
+import DatePicker from './components/Date'
 import axios from 'axios';
+import jQuery from 'jquery';
+
+window.$ = window.jQuery = jQuery;
 
 class App extends React.Component {
   constructor(props){
@@ -44,6 +48,7 @@ class App extends React.Component {
               <form>
                 <Recipient handleChange={this.handleChange.bind(this)} value={this.state.recipient}/>
                 <Body handleChange={this.handleChange.bind(this)} value={this.state.body}/>
+                <DatePicker />
                 <input type="submit" value="submit" onClick={this.scheduleMessage.bind(this)} />
               </form>
             </div>);
