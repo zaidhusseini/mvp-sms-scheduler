@@ -33,8 +33,6 @@ class App extends React.Component {
     }
 
     fieldSelector[field](); //set value of text field
-    console.log(this.state.recipient);
-
   }
 
   scheduleMessage(e){
@@ -53,8 +51,9 @@ class App extends React.Component {
   render() {
 
     return (<div className="container">
-              <h1>Text Message Scheduler</h1>
               <Clock value={this.state.currentTime}/>
+              <h1>Text Message Scheduler</h1>
+              <h3>Remind yourself with a text!</h3>
               <div className="messanger">
                 <form className="form">
                   <h6> Recipient </h6>
@@ -63,7 +62,7 @@ class App extends React.Component {
                   <Body handleChange={this.handleChange.bind(this)} value={this.state.body}/>
                   <h6>  Date </h6>
                   <DatePicker onChange={(e)=>this.handleChange(e, 'date')} value={this.state.date}/>
-                  <input type="submit" className="send" value="submit" onClick={this.scheduleMessage.bind(this)} />
+                  <input type="submit" className="send" value="Remind Me!" onClick={this.scheduleMessage.bind(this)} />
                 </form>
               </div>
             </div>);
