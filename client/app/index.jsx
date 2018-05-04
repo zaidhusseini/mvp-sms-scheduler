@@ -53,15 +53,15 @@ class App extends React.Component {
   render() {
 
     return (<div className="container">
+              <h1>Text Message Scheduler</h1>
               <Clock value={this.state.currentTime}/>
               <div className="messanger">
                 <form className="form">
-                  <h4>Text Message Scheduler</h4>
                   <h6> Recipient </h6>
                   <Recipient handleChange={this.handleChange.bind(this)} value={this.state.recipient}/>
-                  <h6> Message Body </h6>
+                  <h6>  Body </h6>
                   <Body handleChange={this.handleChange.bind(this)} value={this.state.body}/>
-                  <h6> Send Date </h6>
+                  <h6>  Date </h6>
                   <DatePicker onChange={(e)=>this.handleChange(e, 'date')} value={this.state.date}/>
                   <input type="submit" className="send" value="submit" onClick={this.scheduleMessage.bind(this)} />
                 </form>
