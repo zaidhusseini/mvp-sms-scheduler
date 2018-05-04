@@ -2,26 +2,34 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import Recipient from './components/Recipient';
 import Body from './components/Body';
-import DatePicker from './components/Date'
 import axios from 'axios';
-import jQuery from 'jquery';
+import DatePicker from 'react-date-picker';
+import Clock from 'react-clock';
 
-window.$ = window.jQuery = jQuery;
 
 class App extends React.Component {
+
   constructor(props){
     super(props);
     this.state = {
       recipient: '',
-      body: ''
+      body: '',
+      date: new Date(),
+      time: new Date(),
+      currentTime: new Date()
     }
   }
 
-  handleChange(e, field){
+  componentDidMount(){
+    setInterval(()=>this.setState({currentTime: new Date()}),1000);
+  }
 
+  handleChange(e, field){
+    
     const fieldSelector = {
       recipient: ()=> this.setState({recipient: e.target.value}),
-      body: ()=> this.setState({body: e.target.value})
+      body: ()=> this.setState({body: e.target.value}),
+      date: ()=> this.setState({date: e})
     }
 
     fieldSelector[field](); //set value of text field
@@ -44,13 +52,20 @@ class App extends React.Component {
 
   render() {
 
-    return (<div>
-              <form>
-                <Recipient handleChange={this.handleChange.bind(this)} value={this.state.recipient}/>
-                <Body handleChange={this.handleChange.bind(this)} value={this.state.body}/>
-                <DatePicker />
-                <input type="submit" value="submit" onClick={this.scheduleMessage.bind(this)} />
-              </form>
+    return (<div className="container">
+              <Clock value={this.state.currentTime}/>
+              <div className="messanger">
+                <form className="form">
+                  <h4>Text Message Scheduler</h4>
+                  <h6> Recipient </h6>
+                  <Recipient handleChange={this.handleChange.bind(this)} value={this.state.recipient}/>
+                  <h6> Message Body </h6>
+                  <Body handleChange={this.handleChange.bind(this)} value={this.state.body}/>
+                  <h6> Send Date </h6>
+                  <DatePicker onChange={(e)=>this.handleChange(e, 'date')} value={this.state.date}/>
+                  <input type="submit" className="send" value="submit" onClick={this.scheduleMessage.bind(this)} />
+                </form>
+              </div>
             </div>);
   }
 };

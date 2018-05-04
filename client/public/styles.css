@@ -1,0 +1,101 @@
+
+/*
+==================================================================
+Elements 
+==================================================================
+*/
+
+h6{
+  text-align: center;
+}
+
+
+/*
+==================================================================
+Containers 
+==================================================================
+*/
+
+#app{
+  display: flex;
+  flex-direction: column;
+  align-items: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+}
+
+.container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 80%;
+  min-height: 80%;
+}
+
+.messanger{
+  display: block;
+  border: 1px solid;
+  padding: 10px;
+  width: 50%;
+  height: 50%;
+}
+
+
+
+
+/*
+==================================================================
+Content 
+==================================================================
+*/
+
+
+.form, .message-body, .message-recipient{
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  min-width: 100%
+}
+
+
+.form{
+  min-height: 100%;
+}
+
+.send{
+  display: block;
+  background-color: orange;
+  width: 100%;
+}
+
+.send:hover{
+  background-color: honeydew;
+  cursor: pointer;
+}
+
+.body, .to {
+  width: 80%;
+}
+
+
+/*
+==================================================================
+Widgets 
+==================================================================
+*/
+
+.react-date-picker{
+  width: 100%;
+  height: 5%;
+}
+
+.react-date-picker__button{
+  width: 80%;
+}
+
+.react-clock{
+  display: block;
+}

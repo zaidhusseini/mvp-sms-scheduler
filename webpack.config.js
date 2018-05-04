@@ -17,6 +17,14 @@ var config = {
         include : APP_DIR,
         exclude: '/node_modules',
         loader : 'babel-loader',
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+      },
+      {
+        test: /\.less$/,
+        loaders: ['style-loader', 'css-loader', 'less-loader']
       }
     ]
   }

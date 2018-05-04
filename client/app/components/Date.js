@@ -1,15 +1,26 @@
-import React from 'react';
+import React, { Component } from 'react';
+import DatePicker from 'react-date-picker';
 
-const DatePicker = (props) => {
+class DatePickerModule extends Component {
+  
+  constructor(){
+    super();
+    this.state = {
+      date: new Date(),
+    }
+    
+  }
 
-$( function() {
-    $( "#datepicker" ).datepicker();
-  } );
+  onChange(date){
+    this.setState({ date })
+  }
 
-  return (<div>
-           Date: <input type="text" id="datepicker" />
-          </div>)
+  render(){
+    return (<div>
+             <DatePicker onChange={this.onChange} value={this.state.date} />
+            </div>)
+  }
   
 }
 
-export default DatePicker;
+export default DatePickerModule;
