@@ -7,6 +7,11 @@ Elements
 
 h1, h6{
   text-align: center;
+  color: white;
+}
+
+body{
+  background: linear-gradient(130deg, #3c91e7 0, #78378c 100%);
 }
 
 
@@ -35,12 +40,13 @@ Containers
 }
 
 .messanger{
+  background-color: honeydew;
   display: block;
   border: 1px solid;
   border-radius: 5px;
   padding: 10px;
-  min-width: 30%;
-  max-height: 80%;
+  max-width: 100%;
+  min-height: 60%;
 }
 
 .form, .message-body, .message-recipient{
@@ -53,6 +59,7 @@ Containers
 }
 
 .form{
+  min-height: 60%;
   max-height:100%;
 }
 
@@ -92,6 +99,15 @@ Widgets
 .react-clock, .react-date-picker{
   display: flex;
   justify-content: center;
+}
+
+.react-clock__face{
+  background-color: white;
+}
+
+.react-clock{
+  height: 100px;
+  width: 100px;
 }
 
 .react-date-picker{
