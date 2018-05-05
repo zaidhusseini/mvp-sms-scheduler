@@ -43,7 +43,7 @@ class App extends React.Component {
     axios.post('/send',{
       to: this.state.recipient,
       body: this.state.body,
-      date: Date.now()
+      date: new Date('2018 05 04 17:54:00')
     })
     .then((res)=> console.log(res));
   }
