@@ -111,7 +111,7 @@ Widgets
 ==================================================================
 */
 
-.react-clock, .react-date-picker{
+.react-clock, .react-date-picker, .rc-time-picker{
   display: flex;
   justify-content: center;
 }
@@ -142,4 +142,13 @@ Widgets
   justify-content: center;
 }
 
+ .rc-time-picker{
+  width: 80%;
+ }
 
+ .rc-time-picker-input{
+  text-align: center;
+  height: 10%;
+  border: 1px solid black;
+  border-radius: 5px;
+ }

@@ -58,7 +58,7 @@ router.post('/', async (req, res)=>{
 const checkScheduledMessages = async function(){
   const MS_PER_MINUTE = 60000;
   const currentDate = new Date();
-  const bufferedTime = new Date(currentDate.getTime() - MS_PER_MINUTE * 0.5);
+  const bufferedTime = new Date(currentDate.getTime() - MS_PER_MINUTE * 0.5); //buffer a little bit of time to ensure messages fetched from DB don't get missed
   
   //look for all scheduled messages in the next 5 minutes
   let scheduledMessages = await Scheduler.find({date: {"$gte": bufferedTime, "$lt": new Date(currentDate.getTime() + MS_PER_MINUTE * 60 )}})
@@ -81,12 +81,10 @@ const checkScheduledMessages = async function(){
         //delete message from DB once sent
         await Scheduler.find({_id:message._id}).remove().exec();
         console.log('message deleted');
-        res.status(200).send(confirmation);
       }
 
       catch (err){
         console.log(err);
-        res.status(501).send(err);
       }
 
     }
