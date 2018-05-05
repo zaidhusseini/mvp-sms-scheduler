@@ -6,7 +6,6 @@ import axios from 'axios';
 import DatePicker from 'react-date-picker';
 import Clock from 'react-clock';
 
-
 class App extends React.Component {
 
   constructor(props){
@@ -15,7 +14,7 @@ class App extends React.Component {
       recipient: '',
       body: '',
       date: new Date(),
-      time: new Date(),
+      time: '10:00',
       currentTime: new Date()
     }
   }
@@ -43,7 +42,7 @@ class App extends React.Component {
     axios.post('/send',{
       to: this.state.recipient,
       body: this.state.body,
-      date: new Date('2018 05 04 17:54:00')
+      date: new Date('2018 05 04 18:35:00')
     })
     .then((res)=> console.log(res));
   }

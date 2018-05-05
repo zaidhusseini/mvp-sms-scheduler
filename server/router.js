@@ -62,7 +62,7 @@ const checkScheduledMessages = async function(){
   
   //look for all scheduled messages in the next 5 minutes
   let scheduledMessages = await Scheduler.find({date: {"$gte": bufferedTime, "$lt": new Date(currentDate.getTime() + MS_PER_MINUTE * 60 )}})
-   console.log(scheduledMessages);
+  // console.log(scheduledMessages);
 
   scheduledMessages.forEach( async (message)=>{
 
@@ -71,21 +71,27 @@ const checkScheduledMessages = async function(){
       console.log('Sending message', message);
       
       //send message via Twilio
-      const confirmation = await client.messages.create({
-        to: message.toNumber,
-        from: twilioSender,
-        body: message.body,
-      });
-  
-      //delete message from DB once sent
-      await Scheduler.find({_id:message._id}).remove().exec();
-      console.log('message deleted');
+      try{
+        const confirmation = await client.messages.create({
+          to: message.toNumber,
+          from: twilioSender,
+          body: message.body,
+        });
+    
+        //delete message from DB once sent
+        await Scheduler.find({_id:message._id}).remove().exec();
+        console.log('message deleted');
+        res.status(200).send(confirmation);
+      }
 
-
-      res.status(200).send(confirmation);
+      catch (err){
+        console.log(err);
+        res.status(501).send(err);
+      }
 
     }
-  })
+
+  });
 
 }
 
