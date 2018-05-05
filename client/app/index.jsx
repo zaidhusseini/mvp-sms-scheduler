@@ -48,8 +48,8 @@ class App extends React.Component {
 
     let dateString = this.state.date.format('MM-DD-YYYY');
     let timeString = this.state.time.format('HH:mm');
-    let dateAndTime = moment(dateString + ' ' + timeString);
-   
+    let dateAndTime = moment(dateString + ' ' + timeString, "MM-DD-YYYY HH:mm");
+
     console.log('scheduling ', dateAndTime.toDate());
    
     axios.post('/send',{
