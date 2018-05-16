@@ -73,6 +73,14 @@ Containers
 */  height:100%;
 }
 
+ .modal-container {
+   position: relative;
+ }
+ .modal-container .modal, .modal-container .modal-backdrop {
+   position: absolute;
+ }
+
+
 /*
 ==================================================================
 Content 
@@ -110,6 +118,14 @@ Content
 Widgets 
 ==================================================================
 */
+
+.date-picker{
+  min-width: 100%;
+}
+
+.react-datepicker{
+  font-size: 15px;
+}
 
 .react-clock, .react-date-picker, .rc-time-picker{
   display: flex;
@@ -152,3 +168,5 @@ Widgets
   border: 1px solid black;
   border-radius: 5px;
  }
+
+

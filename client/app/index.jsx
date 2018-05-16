@@ -4,7 +4,8 @@ import Recipient from './components/Recipient';
 import Body from './components/Body';
 import axios from 'axios';
 import moment from 'moment';
-// import DatePicker from 'react-date-picker';
+// import { Alert } from 'react-bootsrap';
+import Trigger from './components/Trigger';
 import Clock from 'react-clock';
 import DatePicker from 'react-datepicker';
 import TimePicker from 'rc-time-picker';
@@ -20,7 +21,8 @@ class App extends React.Component {
       body: '',
       date: moment(),
       time: moment(),
-      currentTime: new Date()
+      currentTime: new Date(),
+      showConfirmation: false
     }
   }
 
@@ -57,7 +59,16 @@ class App extends React.Component {
       body: this.state.body,
       date: dateAndTime.toDate()
     })
-    .then((res)=> console.log(res));
+    .then((res)=> {
+      console.log(res);
+      this.setState({showConfirmation: true})
+      console.log('sent!');
+    }
+    );
+  }
+
+  hideModal(){
+    this.setState({showConfirmation:false});
   }
 
   render() {
@@ -73,12 +84,13 @@ class App extends React.Component {
                   <h6>  Body </h6>
                   <Body handleChange={this.handleChange.bind(this)} value={this.state.body}/>
                   <h6>  Date </h6>
-                  <DatePicker selected={this.state.date} onChange={(e)=>this.handleChange(e, 'date')} />
+                  <DatePicker className="date-picker" selected={this.state.date} onChange={(e)=>this.handleChange(e, 'date')} />
                   <h6>  Time </h6>
                   <TimePicker use12Hours showSecond={false} defaultValue={moment()} className="xxx" onChange={(e)=>this.handleChange(e, 'time')}/>
                   <input type="submit" className="send" value="Remind Me!" onClick={this.scheduleMessage.bind(this)} />
                 </form>
               </div>
+              <Trigger show={this.state.showConfirmation} date={this.state.date} hide={this.hideModal.bind(this)} />
             </div>);
   }
 };
