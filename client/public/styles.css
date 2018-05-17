@@ -5,6 +5,10 @@ Elements
 ==================================================================
 */
 
+h1{
+  font-size: 3rem;
+}
+
 h1, h6{
   text-align: center;
   margin: 1%;
@@ -15,14 +19,27 @@ h1, h3{
 }
 
 h3{
-  font-size: 25px;
+  font-size: 2rem;
   font-weight: normal;
+}
+
+h4 {
+  font-size: 1.2rem;
+  margin: 0px;
 }
 
 body{
   background: linear-gradient(45deg, #3c91e7 0, #78378c 100%);
 }
 
+@media screen and (min-width: 1366px) {
+  h1{
+    font-size: 5rem;
+  }
+  h3{
+    font-size: 2em;
+  }
+}
 
 /*
 ==================================================================
@@ -48,22 +65,43 @@ Containers
   height: 100%;
 }
 
-.messanger{
+div.messanger{
   background-color: honeydew;
   display: block;
   border: 1px solid;
   border-radius: 5px;
   padding: 10px;
-  height: 60%;
+  height: 55%;
   min-width: 30%;
-  max-width: 80%;
+}
+
+@media screen and (min-width: 1366px) {
+  div.messanger{
+    min-width: 30%;
+    max-width: 70%;
+  }
+}
+
+.date-and-time{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  min-width: 100%;
+}
+
+div.date-picker-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+
 }
 
 .form, .message-body, .message-recipient{
   display: flex;
   align-content: center;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-around; 
   align-items: center;
   min-width: 100%;
 }
@@ -88,12 +126,12 @@ Content
 */
 
 .body, .to {
-  width: 80%;
+  width: 90%;
   border: 1px solid;
   border-radius: 5px;
 }
 
-.body{
+textarea.body{
   height: 30%;
 }
 
@@ -119,8 +157,14 @@ Widgets
 ==================================================================
 */
 
+.date-picker, .rc-time-picker{
+  display: inline-block;
+  width: 90%;
+}
+
 .date-picker{
-  min-width: 100%;
+  border-radius: 5px;
+  border: 1px solid;
 }
 
 .react-datepicker{
@@ -163,10 +207,14 @@ Widgets
  }
 
  .rc-time-picker-input{
+  width: 80%;
   text-align: center;
-  height: 10%;
+  height: 7%;
   border: 1px solid black;
   border-radius: 5px;
  }
 
+ .button{
+  width: 90%;
+ }
 
