@@ -4,7 +4,7 @@ import Recipient from './components/Recipient';
 import Body from './components/Body';
 import axios from 'axios';
 import moment from 'moment';
-// import { Alert } from 'react-bootsrap';
+import { Button,FormControl } from 'react-bootstrap';
 import Trigger from './components/Trigger';
 import Clock from 'react-clock';
 import DatePicker from 'react-datepicker';
@@ -53,7 +53,8 @@ class App extends React.Component {
     let dateAndTime = moment(dateString + ' ' + timeString, "MM-DD-YYYY HH:mm");
 
     console.log('scheduling ', dateAndTime.toDate());
-   
+    this.setState({date: dateAndTime})
+
     axios.post('/send',{
       to: this.state.recipient,
       body: this.state.body,
@@ -71,6 +72,7 @@ class App extends React.Component {
     this.setState({showConfirmation:false});
   }
 
+
   render() {
 
     return (<div className="container">
@@ -79,15 +81,21 @@ class App extends React.Component {
               <h3>Remind yourself with a text!</h3>
               <div className="messanger">
                 <form className="form">
-                  <h6> Recipient </h6>
+                  <label> Recipient </label>
                   <Recipient handleChange={this.handleChange.bind(this)} value={this.state.recipient}/>
-                  <h6>  Body </h6>
+                  <label>  Body </label>
                   <Body handleChange={this.handleChange.bind(this)} value={this.state.body}/>
-                  <h6>  Date </h6>
-                  <DatePicker className="date-picker" selected={this.state.date} onChange={(e)=>this.handleChange(e, 'date')} />
-                  <h6>  Time </h6>
-                  <TimePicker use12Hours showSecond={false} defaultValue={moment()} className="xxx" onChange={(e)=>this.handleChange(e, 'time')}/>
-                  <input type="submit" className="send" value="Remind Me!" onClick={this.scheduleMessage.bind(this)} />
+                  <div className="date-and-time">
+                    <div className="date-picker-box">
+                      <label>  Date </label>
+                      <DatePicker className="date-picker" selected={this.state.date} onChange={(e)=>this.handleChange(e, 'date')} />
+                    </div>
+                    <div className="date-picker-box">
+                      <label>  Time </label>
+                      <TimePicker use12Hours showSecond={false} defaultValue={moment()} className="xxx" onChange={(e)=>this.handleChange(e, 'time')}/>
+                   </div>
+                  </div>
+                  <Button className="button" bsStyle="primary" onClick={this.scheduleMessage.bind(this)} >Remind Me!</Button>
                 </form>
               </div>
               <Trigger show={this.state.showConfirmation} date={this.state.date} hide={this.hideModal.bind(this)} />
