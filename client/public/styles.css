@@ -5,6 +5,8 @@ Elements
 ==================================================================
 */
 
+
+
 h1{
   font-size: 3rem;
 }
@@ -92,8 +94,10 @@ div.messanger{
 div.date-picker-box{
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  align-content: center;
+  width: 80%;
 
 }
 
@@ -159,12 +163,21 @@ Widgets
 
 .date-picker, .rc-time-picker{
   display: inline-block;
-  width: 90%;
+}
+
+input.date-picker, input.rc-time-picker-input{
+  height: 10%;
+  width: 100%;
 }
 
 .date-picker{
   border-radius: 5px;
   border: 1px solid;
+  text-align: center;
+}
+
+div.react-datepicker-wrapper{
+  width: 80%;
 }
 
 .react-datepicker{
@@ -180,10 +193,6 @@ Widgets
   background-color: white;
 }
 
-.react-date-picker{
-  width: 90%;
-  height: 10%;
-}
 
 .react-date-picker__button{
   width: 90%;
