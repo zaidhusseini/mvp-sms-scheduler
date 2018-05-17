@@ -31,7 +31,13 @@ h4 {
 }
 
 body{
-  background: linear-gradient(45deg, #3c91e7 0, #78378c 100%);
+  /*background: linear-gradient(45deg, #3c91e7 0, #78378c 100%);*/
+  background: #a8c0ff;  /* fallback for old browsers */
+  background: linear-gradient(to right, #3f2b96, #a8c0ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /*font-family: 'Roboto Slab', serif;*/
+  font-family: 'Bree Serif', serif;
+  /*font-family: 'Cardo', serif;*/
+  /*font-family: 'VT323', monospace;*/
 }
 
 @media screen and (min-width: 1366px) {
@@ -68,13 +74,14 @@ Containers
 }
 
 div.messanger{
-  background-color: honeydew;
+  font-size: 15px;
+  background-color: #ffc962;
   display: block;
-  border: 1px solid;
   border-radius: 5px;
   padding: 10px;
   height: 55%;
   min-width: 30%;
+  box-shadow: 0px 0px 15px lightgrey;
 }
 
 @media screen and (min-width: 1366px) {
@@ -137,6 +144,11 @@ Content
 
 textarea.body{
   height: 30%;
+  box-shadow: 0px 3px 3px darkgrey;
+}
+
+input.to{
+  box-shadow: 0px 3px 3px darkgrey;
 }
 
 .send{
@@ -168,6 +180,8 @@ Widgets
 input.date-picker, input.rc-time-picker-input{
   height: 10%;
   width: 100%;
+  box-shadow: 0px 3px 3px darkgrey;
+
 }
 
 .date-picker{
@@ -191,6 +205,7 @@ div.react-datepicker-wrapper{
 
 .react-clock__face{
   background-color: white;
+
 }
 
 
@@ -224,6 +239,11 @@ div.react-datepicker-wrapper{
  }
 
  .button{
+  margin-top: 3%;
   width: 90%;
+  height: 12%;
+  font-size: 18px;
+  font-weight: normal;
+  box-shadow: 0px 3px 3px darkgrey;
  }
 
