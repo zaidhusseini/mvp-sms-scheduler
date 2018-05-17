@@ -1,3 +1,4 @@
 .env
 node_modules
 client/public/bundle.js
+reminder-app-key.pem

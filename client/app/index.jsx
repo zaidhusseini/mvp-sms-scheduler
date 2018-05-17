@@ -83,7 +83,7 @@ class App extends React.Component {
                 <form className="form">
                   <label> Recipient </label>
                   <Recipient handleChange={this.handleChange.bind(this)} value={this.state.recipient}/>
-                  <label>  Body </label>
+                  <label>  Message Body </label>
                   <Body handleChange={this.handleChange.bind(this)} value={this.state.body}/>
                   <div className="date-and-time">
                     <div className="date-picker-box">

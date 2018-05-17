@@ -145,6 +145,7 @@ Content
 textarea.body{
   height: 30%;
   box-shadow: 0px 3px 3px darkgrey;
+  resize: vertical;
 }
 
 input.to{
@@ -181,7 +182,10 @@ input.date-picker, input.rc-time-picker-input{
   height: 10%;
   width: 100%;
   box-shadow: 0px 3px 3px darkgrey;
+}
 
+input.date-picker{
+  margin-left: 15px;
 }
 
 .date-picker{
