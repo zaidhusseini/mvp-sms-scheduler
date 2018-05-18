@@ -17,7 +17,8 @@ class DatePickerModule extends Component {
 
   render(){
     return (<div>
-             <DatePicker onChange={this.onChange} value={this.state.date} />
+             <DatePicker type="date" popperPlacement="top-end" onChange={this.onChange} value={this.state.date} />
+              <input type="date"/>
             </div>)
   }
   

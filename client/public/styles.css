@@ -180,7 +180,7 @@ Widgets
 
 input.date-picker, input.rc-time-picker-input{
   height: 10%;
-  width: 100%;
+  width: 80%;
   box-shadow: 0px 3px 3px darkgrey;
 }
 
