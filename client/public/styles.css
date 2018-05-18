@@ -80,7 +80,7 @@ div.messanger{
   border-radius: 5px;
   padding: 10px;
   height: 55%;
-  min-width: 30%;
+  min-width: 40%;
   box-shadow: 0px 0px 15px black;
 }
 
@@ -178,24 +178,31 @@ Widgets
   display: inline-block;
 }
 
-input.date-picker, input.rc-time-picker-input{
+input.date-picker, input.rc-time-picker-input, .time-picker{
   height: 10%;
-  width: 80%;
+  width: 85%;
   box-shadow: 0px 3px 3px darkgrey;
 }
 
-input.date-picker{
-  margin-left: 15px;
-}
-
-.date-picker{
+.date-picker, .time-picker{
   border-radius: 5px;
   border: 1px solid;
   text-align: center;
 }
 
+.time-picker{
+  width:100%;
+}
+
+@media screen and (min-width: 1366px) {
+  .time-picker{
+    width: 82%;
+  }
+}
+
+
 div.react-datepicker-wrapper{
-  width: 80%;
+  width: 60%;
 }
 
 .react-datepicker{

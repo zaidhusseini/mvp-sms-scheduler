@@ -8,7 +8,7 @@ import { Button,FormControl } from 'react-bootstrap';
 import Trigger from './components/Trigger';
 import Clock from 'react-clock';
 // import DatePicker from 'react-datepicker';
-import TimePicker from 'rc-time-picker';
+// import TimePicker from 'rc-time-picker';
 import 'rc-time-picker/assets/index.css';
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -31,12 +31,12 @@ class App extends React.Component {
   }
 
   handleChange(e, field){
-    console.log(e);
+    console.log(e.target.value);
     const fieldSelector = {
       recipient: ()=> this.setState({recipient: e.target.value}),
       body: ()=> this.setState({body: e.target.value}),
       date: ()=>   this.setState({date: moment(e.target.value)}),
-      time: ()=> this.setState({time: e})
+      time: ()=> this.setState({time: moment(e.target.value, "HH:mm")})
     }
 
     fieldSelector[field](); //set value of text field
@@ -93,7 +93,7 @@ class App extends React.Component {
                     </div>
                     <div className="date-picker-box">
                       <label>  Time </label>
-                      <TimePicker use12Hours showSecond={false} defaultValue={moment()} className="xxx" onChange={(e)=>this.handleChange(e, 'time')}/>
+                      <input className="time-picker" type="time"  value={this.state.time.format('HH:mm')} onChange={(e)=>this.handleChange(e, 'time')} />
                     </div>
                   </div>
                   <Button className="button" bsStyle="primary" onClick={this.scheduleMessage.bind(this)} >Remind Me!</Button>
