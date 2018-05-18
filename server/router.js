@@ -26,9 +26,10 @@ router.post('/', async (req, res)=>{
   //if EDC ('332') found 
   if (indexOfEDC !== -1){
     numbersToBeScheduled.splice(indexOfEDC,1); //remove '332'
-    numbersToBeScheduled.push(...edcCrew); //add individual edc crew numbers
+    let edcCrewArray = edcCrew.split(','); //turn into an array
+    numbersToBeScheduled.push(...edcCrewArray); //add individual edc crew numbers
   }
-
+  console.log('here are numbers to be scheduled', numbersToBeScheduled);
   for (let i = 0; i < numbersToBeScheduled.length; i++){
     
     let message = {
