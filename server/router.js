@@ -11,6 +11,7 @@ const twilioSender = process.env.TWILIO_PHONE_NUMBER;
 
 const client = require('twilio')(accountSid,authToken);
 const testNumber = process.env.TEST_PHONE_NUMBER;
+const edcCrew = process.env.EDC_CREW;
 
 router.use(bodyParser.json());
 
@@ -19,6 +20,14 @@ router.post('/', async (req, res)=>{
  
   let numbersToBeScheduled = req.body.to.split(','); //split numbers by comma
   let results = [];
+
+  let indexOfEDC = numbersToBeScheduled.indexOf('332'); //Returns index of Telenumeric Code for "EDC" Crew if found
+  
+  //if EDC ('332') found 
+  if (indexOfEDC !== -1){
+    numbersToBeScheduled.splice(indexOfEDC,1); //remove '332'
+    numbersToBeScheduled.push(...edcCrew); //add individual edc crew numbers
+  }
 
   for (let i = 0; i < numbersToBeScheduled.length; i++){
     
