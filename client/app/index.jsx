@@ -58,7 +58,7 @@ class App extends React.Component {
     this.setState({date: dateAndTime});
    
     axios.post('/send',{
-      to: this.state.recipient.replace(/\s/g, ''), //remove all spaces,
+      to: this.state.recipient.replace(/[^0-9\,+]/g, ''), //remove all spaces,
       body: this.state.body,
       date: dateAndTime.toDate()
     })
