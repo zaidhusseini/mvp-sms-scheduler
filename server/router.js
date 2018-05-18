@@ -14,42 +14,37 @@ const testNumber = process.env.TEST_PHONE_NUMBER;
 
 router.use(bodyParser.json());
 
-// router.post('/', async (req,res) => {
-//   console.log(req.body);
-
-//   const confirmation = await client.messages.create({
-//     to: req.body.to,
-//     from: twilioSender,
-//     body: req.body.body,
-//     //mediaUrl: 'https://picsum.photos/800/600?image=999',
-//   });
-  
-//   res.status(200).send(confirmation);
-
-// });
-
 //When a message is received for scheduling from client, store in DB
 router.post('/', async (req, res)=>{
+ 
+  let numbersToBeScheduled = req.body.to.split(','); //split numbers by comma
+  let results = [];
 
-  let message = {
-    toNumber: req.body.to,
-    body: req.body.body,
-    date: req.body.date
-  };
-  console.log(req.body);
+  for (let i = 0; i < numbersToBeScheduled.length; i++){
+    
+    let message = {
+      toNumber: numbersToBeScheduled[i],
+      body: req.body.body,
+      date: req.body.date
+    };
+    console.log('this is the message', message);
 
-  console.log('dates', req.body.date, new Date(req.body.date));
+    console.log('dates', req.body.date, new Date(req.body.date));
 
-  try {
-    let result = await Scheduler.create(message);
-    console.log('message saved');
-    res.send(result);
+    try {
+      let response = await Scheduler.create(message);
+      results.push(response);
+      console.log('message saved');
+    }
+
+    catch (err) {
+      res.status(501).send(err);
+      console.log(err);
+    }
+
   }
 
-  catch (err) {
-    res.status(501).send(err);
-    console.log(err);
-  }
+  res.send(results);
 
 });
 
@@ -76,6 +71,8 @@ const checkScheduledMessages = async function(){
           from: twilioSender,
           body: message.body,
         });
+
+        //use mediaUrl: 'https://picsum.photos/800/600?image=999' to send images,
     
         //delete message from DB once sent
         await Scheduler.find({_id:message._id}).remove().exec();

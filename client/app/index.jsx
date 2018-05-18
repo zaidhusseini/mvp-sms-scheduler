@@ -83,7 +83,7 @@ class App extends React.Component {
               <h3>Remind yourself with a text!</h3>
               <div className="messanger">
                 <form className="form">
-                  <label> Recipient </label>
+                  <label> Recipients </label>
                   <Recipient handleChange={this.handleChange.bind(this)} value={this.state.recipient}/>
                   <label>  Message Body </label>
                   <Body handleChange={this.handleChange.bind(this)} value={this.state.body}/>
