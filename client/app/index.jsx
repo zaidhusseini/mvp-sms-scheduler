@@ -32,31 +32,33 @@ class App extends React.Component {
 
   handleChange(e, field){
     console.log(e.target.value);
+
+    let value = e.target.value; 
+
     const fieldSelector = {
-      recipient: ()=> this.setState({recipient: e.target.value}),
-      body: ()=> this.setState({body: e.target.value}),
-      date: ()=>   this.setState({date: moment(e.target.value)}),
-      time: ()=> this.setState({time: moment(e.target.value, "HH:mm")})
+      recipient: ()=> this.setState({recipient: value}),
+      body: ()=> this.setState({body: value}),
+      date: ()=> this.setState({date: moment(value)}),
+      time: ()=> this.setState({time: moment(value, "HH:mm")})
     }
 
     fieldSelector[field](); //set value of text field
-    console.log(e);
   }
 
   scheduleMessage(e){
     e.preventDefault(); //prevent screen refresh
 
-    console.log(this.state.recipient);
+    console.log('Sending to', this.state.recipient);
 
     let dateString = this.state.date.format('MM-DD-YYYY');
     let timeString = this.state.time.format('HH:mm');
     let dateAndTime = moment(dateString + ' ' + timeString, "MM-DD-YYYY HH:mm");
-
-    console.log('scheduling ', dateAndTime.toDate());
-    this.setState({date: dateAndTime})
-
+    
+    console.log('scheduling ',  dateAndTime.toDate());
+    this.setState({date: dateAndTime});
+   
     axios.post('/send',{
-      to: this.state.recipient,
+      to: this.state.recipient.replace(/\s/g, ''), //remove all spaces,
       body: this.state.body,
       date: dateAndTime.toDate()
     })
@@ -72,7 +74,6 @@ class App extends React.Component {
     this.setState({showConfirmation:false});
   }
 
-                      // <DatePicker className="date-picker" selected={this.state.date} onChange={(e)=>this.handleChange(e, 'date')} />
 
   render() {
 
