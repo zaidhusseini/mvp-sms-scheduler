@@ -4,7 +4,7 @@ import { FormControl } from 'react-bootstrap';
 const Recipient = (props) => {
 return (
   <div className="message-recipient"> 
-    <FormControl type="text" className="to" value={props.value} placeholder="Enter phone number" onChange={(e)=>props.handleChange(e,'recipient')} />
+    <FormControl type="tel" className="to" value={props.value} placeholder="Enter phone number" onChange={(e)=>props.handleChange(e,'recipient')} />
   </div>)};
 
 export default Recipient;
