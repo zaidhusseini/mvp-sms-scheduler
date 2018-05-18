@@ -31,12 +31,12 @@ class App extends React.Component {
   }
 
   handleChange(e, field){
-    console.log(e.target.value);
+    console.log(e);
     const fieldSelector = {
       recipient: ()=> this.setState({recipient: e.target.value}),
       body: ()=> this.setState({body: e.target.value}),
       date: ()=>   this.setState({date: moment(e.target.value)}),
-      time: ()=> this.setState({time: moment(e.target.value)})
+      time: ()=> this.setState({time: e})
     }
 
     fieldSelector[field](); //set value of text field
