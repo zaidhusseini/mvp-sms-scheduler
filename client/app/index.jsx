@@ -35,14 +35,18 @@ class App extends React.Component {
 
     let value = e.target.value; 
 
-    const fieldSelector = {
-      recipient: ()=> this.setState({recipient: value}),
-      body: ()=> this.setState({body: value}),
-      date: ()=> this.setState({date: moment(value)}),
-      time: ()=> this.setState({time: moment(value, "HH:mm")})
+    //check if valid date/time has been entered (will return "" if invalid)
+    if (value){
+
+      const fieldSelector = {
+        recipient: ()=> this.setState({recipient: value}),
+        body: ()=> this.setState({body: value}),
+        date: ()=> this.setState({date: moment(value)}),
+        time: ()=> this.setState({time: moment(value, "HH:mm")})
+      }
+      fieldSelector[field](); //set value of text field
     }
 
-    fieldSelector[field](); //set value of text field
   }
 
   scheduleMessage(e){
