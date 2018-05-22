@@ -66,7 +66,7 @@ const checkScheduledMessages = async function(){
   const bufferedTime = new Date(currentDate.getTime() - MS_PER_MINUTE * 0.5); //buffer a little bit of time to ensure messages fetched from DB don't get missed
   
   //look for all scheduled messages in the next 5 minutes
-  let scheduledMessages = await Scheduler.find({date: {"$gte": bufferedTime, "$lt": new Date(currentDate.getTime() + MS_PER_MINUTE * 60 )}})
+  let scheduledMessages = await Scheduler.find({date: {"$gte": bufferedTime, "$lt": new Date(currentDate.getTime() + MS_PER_MINUTE * 5 )}})
 
   scheduledMessages.forEach( async (message)=>{
 
