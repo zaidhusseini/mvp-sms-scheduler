@@ -184,6 +184,10 @@ input.date-picker, input.rc-time-picker-input, .time-picker{
   box-shadow: 0px 3px 3px darkgrey;
 }
 
+
+
+
+
 .date-picker, .time-picker{
   border-radius: 5px;
   border: 1px solid;
@@ -193,6 +197,23 @@ input.date-picker, input.rc-time-picker-input, .time-picker{
 .time-picker{
   width:100%;
 }
+
+@-moz-document url-prefix(){
+  
+  .time-picker {
+    height:40px;
+  }
+   
+  input.date-picker{
+    height: 40px;
+  }
+
+  textarea.body{
+    height: 130px;
+  }
+
+}
+
 
 @media screen and (min-width: 1366px) {
   .time-picker{
